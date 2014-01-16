@@ -1,16 +1,17 @@
 package url62
 
 import (
-	"github.com/nu7hatch/gouuid"
+	//"github.com/nu7hatch/gouuid"
 	"math/big"
+	"strings"
 )
 
 const base62alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 func FromUUID(shex string) string {
-	u, _ := uuid.ParseHex(shex)
+	u := strings.Replace(shex, "-", "", 4)
 
-	convertUp(u, base62alphabet)
+	return convertUp(u, base62alphabet)
 }
 
 // ConvertUp converts a hexadecimal UUID string to a base alphabet greater than
