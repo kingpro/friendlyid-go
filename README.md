@@ -10,8 +10,8 @@ This library is based on [url62](https://github.com/antonsekatskii/url62-go)  li
 ```
 import "github.com/mariuszs/friendlyid-go/friendlyid"
 
-friendlyid.Encode("6ba7b814-9dad-11d1-80b4-00c04fd430c8")
-// "U7PVVMkSSJGepn8RKilghA"
+friendlyid.Encode("c3587ec5-0976-497f-8374-61e0c2ea3da5")
+// 5wbwf6yUxVBcr48AMbz9cb
 
 friendlyid.Decode("5wbwf6yUxVBcr48AMbz9cb")
 // c3587ec5-0976-497f-8374-61e0c2ea3da5
