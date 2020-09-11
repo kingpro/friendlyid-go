@@ -3,6 +3,8 @@
 `friendlyid` is a library to generate really unique and url friendly IDs
 based on UUID and base62
 
+This library is based on [url62](https://github.com/antonsekatskii/url62-go)  library with the traditional _base62_ alphabet (`0-9A-Za-z`) to achieve  compatibility with library _friendlyid_.
+
 ## Usage
 
 ```
