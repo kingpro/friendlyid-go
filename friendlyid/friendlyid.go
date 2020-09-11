@@ -1,7 +1,6 @@
-package url62
+package friendlyid
 
 import (
-	//"github.com/nu7hatch/gouuid"
 	"errors"
 	"fmt"
 	"math/big"
@@ -11,7 +10,7 @@ import (
 // https://en.wikipedia.org/wiki/Base62
 const base62alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-func FromUUID(shex string) (string, error) {
+func encode(shex string) (string, error) {
 	u := strings.Replace(shex, "-", "", 4)
 
 	converted, err := convertUp(u, base62alphabet)
@@ -22,7 +21,7 @@ func FromUUID(shex string) (string, error) {
 	return converted, nil
 }
 
-func ToUUID(s string) (string, error) {
+func decode(s string) (string, error) {
 	//.insert(8, '-').insert(13, '-').insert(18, '-').insert(23, '-')
 	u, err := convertDown(s, base62alphabet)
 	if err != nil {
