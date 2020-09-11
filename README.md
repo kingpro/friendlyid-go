@@ -1,4 +1,4 @@
-# url62
+# url62 - compatible with [friendlyId](https://github.com/Devskiller/friendly-id) 
 
 url62 is a library to generate really unique and url friendly IDs
 based on UUID and base62

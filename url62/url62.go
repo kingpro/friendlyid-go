@@ -8,7 +8,8 @@ import (
 	"strings"
 )
 
-const base62alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+// https://en.wikipedia.org/wiki/Base62
+const base62alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 func FromUUID(shex string) (string, error) {
 	u := strings.Replace(shex, "-", "", 4)
@@ -54,15 +55,10 @@ func convertUp(oldNumber string, baseAlphabet string) (string, error) {
 		_, r := n.DivMod(n, base, big.NewInt(0))
 		newNumber[i] = baseAlphabet[r.Int64()]
 	}
-	return fmt.Sprintf("%022s", newNumber[i:]), nil
+	return fmt.Sprintf("%s", newNumber[i:]), nil
 }
 
 func convertDown(oldNumber string, baseAlphabet string) (string, error) {
-	// Return if oldNumber is less or bigger than 22
-	if len(oldNumber) != 22 {
-		return "", errors.New("Not valid base62-encoded UUID string")
-	}
-
 	n := big.NewInt(0)
 
 	s := strings.Split(oldNumber, "")

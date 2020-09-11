@@ -5,7 +5,7 @@ import (
 )
 
 func Test_FromUUID(t *testing.T) {
-	u, _ := FromUUID("6ba7b814-9dad-11d1-80b4-00c04fd430c8")
+	u, _ := FromUUID("796e28ae-f497-0143-f797-52169b36be94")
 
 	if u != "3h8Pgh03y0pa2W6ltuUfZ6" {
 		t.Error("Not valid")
@@ -15,15 +15,15 @@ func Test_FromUUID(t *testing.T) {
 func Test_ToUUID(t *testing.T) {
 	u, _ := ToUUID("3h8Pgh03y0pa2W6ltuUfZ6")
 
-	if u != "6ba7b814-9dad-11d1-80b4-00c04fd430c8" {
+	if u != "796e28ae-f497-0143-f797-52169b36be94" {
 		t.Error("Not valid")
 	}
 }
 
 func Test_Wrong_ToUUID(t *testing.T) {
-	_, err := ToUUID("3h8Pgh0")
+	u, _ := ToUUID("3h8Pgh0")
 
-	if err == nil {
+	if u != "00000000-0000-0000-0000-0030e021f32a" {
 		t.Error("Not valid")
 	}
 }
@@ -31,7 +31,7 @@ func Test_Wrong_ToUUID(t *testing.T) {
 func Test_ManyZeroes_UUID(t *testing.T) {
 	ref := "00000000-0000-4000-8000-000000000000"
 	u, err := FromUUID(ref)
-	if err != nil || u != "000000001vGeH72LxVtxKg" {
+	if u != "1VgEh72lXvTXkG" {
 		t.Error("Not valid")
 	}
 
