@@ -4,16 +4,16 @@ import (
 	"testing"
 )
 
-func Test_encode(t *testing.T) {
-	u, _ := encode("796e28ae-f497-0143-f797-52169b36be94")
+func Test_Encode(t *testing.T) {
+	u, _ := Encode("796e28ae-f497-0143-f797-52169b36be94")
 
 	if u != "3h8Pgh03y0pa2W6ltuUfZ6" {
 		t.Error("Not valid")
 	}
 }
 
-func Test_decode(t *testing.T) {
-	u, _ := decode("3h8Pgh03y0pa2W6ltuUfZ6")
+func Test_Decode(t *testing.T) {
+	u, _ := Decode("3h8Pgh03y0pa2W6ltuUfZ6")
 
 	if u != "796e28ae-f497-0143-f797-52169b36be94" {
 		t.Error("Not valid")
@@ -21,7 +21,7 @@ func Test_decode(t *testing.T) {
 }
 
 func Test_Wrong_ToUUID(t *testing.T) {
-	u, _ := decode("3h8Pgh0")
+	u, _ := Decode("3h8Pgh0")
 
 	if u != "00000000-0000-0000-0000-0030e021f32a" {
 		t.Error("Not valid")
@@ -30,12 +30,12 @@ func Test_Wrong_ToUUID(t *testing.T) {
 
 func Test_ManyZeroes_UUID(t *testing.T) {
 	ref := "00000000-0000-4000-8000-000000000000"
-	u, err := encode(ref)
+	u, err := Encode(ref)
 	if u != "1VgEh72lXvTXkG" {
 		t.Error("Not valid")
 	}
 
-	d, err := decode(u)
+	d, err := Decode(u)
 	if err != nil || d != ref {
 		t.Error("Not valid")
 	}
@@ -95,7 +95,7 @@ func Test_convertUp(t *testing.T) {
 	}
 }
 
-func Test_decode1(t *testing.T) {
+func Test_Decode1(t *testing.T) {
 	type args struct {
 		s string
 	}
@@ -109,13 +109,13 @@ func Test_decode1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := decode(tt.args.s)
+			got, err := Decode(tt.args.s)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("decode() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("Decode() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("decode() got = %v, want %v", got, tt.want)
+				t.Errorf("Decode() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
@@ -135,13 +135,13 @@ func Test_encode1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := encode(tt.args.shex)
+			got, err := Encode(tt.args.shex)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("encode() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("Encode() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("encode() got = %v, want %v", got, tt.want)
+				t.Errorf("Encode() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
