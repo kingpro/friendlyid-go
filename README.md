@@ -6,10 +6,13 @@ based on UUID and base62
 ## Usage
 
 ```
-import "github.com/8protons/url62-go/url62"
+import "github.com/mariuszs/url62-go/url62"
 
 url62.FromUUID("6ba7b814-9dad-11d1-80b4-00c04fd430c8")
-"U7PVVMkSSJGepn8RKilghA"
+// "U7PVVMkSSJGepn8RKilghA"
+
+url62.ToUUID("5wbwf6yUxVBcr48AMbz9cb")
+// c3587ec5-0976-497f-8374-61e0c2ea3da5
 ```
 
 ## License
